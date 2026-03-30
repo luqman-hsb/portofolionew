@@ -3,60 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Case Study: Driverless Web-to-Print</title>
-  <!-- Google Fonts + Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <title>CASE STUDY: Driverless Web-to-Print | Luqman Hasibuan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* ── SHARED DESIGN TOKENS ── */
+    :root {
+      --bg: #000;
+      --text: #e8e8e8;
+      --text-dim: #ddd;
+      --text-mute: #aaa;
+      --text-faint: #888;
+      --border: rgba(255,255,255,0.08);
+      --border-section: rgba(255,255,255,0.1);
+      --surface: rgba(255,255,255,0.03);
+      --node-bg: #0c0c0c;
+      --node-border: #2a2a2a;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background-color: #000000;
-      color: #ffffff;
+      background-color: var(--bg);
+      color: var(--text);
       font-family: 'Inter', sans-serif;
-      line-height: 1.5;
-      scroll-behavior: smooth;
+      line-height: 1.55;
+      font-weight: 400;
     }
-
-    /* container */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
-    /* navbar (consistent with main portfolio) */
+    /* ── NAVBAR ── */
     .navbar {
       position: sticky;
       top: 0;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.94);
+      background-color: rgba(0,0,0,0.94);
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid var(--border);
       padding: 1.2rem 0;
     }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; }
     .logo {
       font-size: 1.8rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff, #b0b0b0);
+      background: linear-gradient(135deg, #fff, #b0b0b0);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       text-decoration: none;
     }
     .back-link {
-      color: #ffffff;
+      color: #fff;
       text-decoration: none;
       font-weight: 500;
       display: flex;
@@ -66,232 +70,198 @@
       padding: 0.5rem 1.2rem;
       border-radius: 40px;
       transition: 0.2s;
+      font-size: 0.9rem;
+      white-space: nowrap;
     }
-    .back-link:hover {
-      background: rgba(255,255,255,0.05);
-      gap: 12px;
-    }
+    .back-link:hover { background: rgba(255,255,255,0.05); }
 
-    /* case study hero */
-    .cs-hero {
-      padding: 4rem 0 2rem 0;
-    }
-    .cs-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.08);
-      padding: 0.3rem 1rem;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      letter-spacing: 0.5px;
-      margin-bottom: 1.5rem;
-    }
-    .cs-title {
-      font-size: 3.5rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-    .cs-subtitle {
-      font-size: 1.2rem;
-      color: #c0c0c0;
-      max-width: 780px;
+    /* ── HEADER ── */
+    .paper-header {
+      padding: 3.5rem 0 1.5rem 0;
+      border-bottom: 1px solid var(--border-section);
       margin-bottom: 2rem;
-      border-left: 3px solid #ffffff;
-      padding-left: 1.2rem;
     }
-    .cs-meta {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-      color: #aaa;
+    .paper-badge {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 1rem;
     }
-    .cs-meta span i {
-      margin-right: 6px;
-    }
-
-    /* section styles */
-    section {
-      padding: 3.5rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .section-title {
-      font-size: 2rem;
+    .paper-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 50%;
-      height: 3px;
-      background: #ffffff;
-      border-radius: 2px;
-    }
-
-    .grid-2col {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    .text-block {
-      flex: 1.5;
-      color: #e0e0e0;
-    }
-    .text-block p {
-      margin-bottom: 1.2rem;
-    }
-    .info-card {
-      flex: 1;
-      background: rgba(255,255,255,0.03);
-      border-radius: 24px;
-      padding: 1.5rem;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .info-card h3 {
-      font-size: 1.3rem;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
       margin-bottom: 1rem;
-    }
-    .info-card ul {
-      list-style: none;
-    }
-    .info-card li {
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .info-card i {
-      width: 24px;
-      color: #ccc;
-    }
-
-    /* system diagram (figma/canva style but pure css) */
-    .diagram-container {
-      background: rgba(255,255,255,0.02);
-      border-radius: 32px;
-      padding: 2rem;
-      margin: 2rem 0;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .diagram-title {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-weight: 600;
-      letter-spacing: -0.2px;
-    }
-    .flow-diagram {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    .flow-node {
-      background: #0a0a0a;
-      border: 1px solid #2a2a2a;
-      padding: 1rem 1.6rem;
-      border-radius: 60px;
-      font-weight: 500;
-      text-align: center;
-      min-width: 130px;
-      transition: 0.2s;
-    }
-    .flow-node i {
-      margin-right: 6px;
-    }
-    .flow-arrow {
-      font-size: 1.6rem;
-      color: #aaa;
-    }
-    @media (max-width: 760px) {
-      .flow-arrow { display: none; }
-      .flow-diagram { flex-direction: column; }
-      .flow-node { width: 80%; }
-    }
-
-    /* table styling */
-    .challenge-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: rgba(0,0,0,0.4);
-      border-radius: 20px;
-      overflow: hidden;
-    }
-    .challenge-table th, .challenge-table td {
-      text-align: left;
-      padding: 1rem 1.2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .challenge-table th {
-      background: rgba(255,255,255,0.05);
-      font-weight: 600;
-    }
-    .challenge-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .roadmap-list {
-      list-style: none;
-    }
-    .roadmap-list li {
-      margin-bottom: 1rem;
-      display: flex;
-      gap: 12px;
-      align-items: baseline;
-    }
-    .roadmap-list li i {
-      margin-top: 0.2rem;
       color: #fff;
     }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #777;
+    .paper-subtitle {
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: #b0b0b0;
+      max-width: 85%;
+      margin-bottom: 1.2rem;
+      border-left: 2px solid #fff;
+      padding-left: 1.2rem;
+    }
+    .paper-meta {
+      display: flex;
+      gap: 1rem 2rem;
+      flex-wrap: wrap;
       font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-top: 1rem;
+    }
+    .paper-meta span i { width: 20px; margin-right: 6px; }
+
+    /* ── SECTIONS ── */
+    .paper-section { margin: 2.5rem 0; }
+    .section-number {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-mute);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+    .section-heading {
+      font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 1.2rem;
+      border-left: 3px solid #fff;
+      padding-left: 1rem;
+    }
+    .section-subhead {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ccc;
+      margin: 1.5rem 0 0.8rem 0;
     }
 
-    .btn-outline-small {
-      border: 1px solid #ffffff;
-      background: transparent;
-      padding: 0.7rem 1.8rem;
+    /* ── TEXT ── */
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-dim);
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    .list-styled { list-style: none; margin: 1rem 0 1.2rem 0; }
+    .list-styled li {
+      margin-bottom: 0.7rem;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: clamp(0.88rem, 2vw, 0.95rem);
+      color: var(--text-dim);
+    }
+    .list-styled li i { width: 22px; margin-top: 2px; color: #fff; font-size: 0.9rem; flex-shrink: 0; }
+
+    /* ── GRID ── */
+    .grid-2col { display: flex; gap: 2rem; flex-wrap: wrap; margin: 1rem 0 1.5rem 0; }
+    .grid-2col > div { flex: 1; min-width: 220px; }
+
+    /* ── METRICS ── */
+    .metric-row { display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 1.5rem 0; }
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      flex: 1;
+      min-width: 130px;
+    }
+    .metric-number { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+    .metric-label { font-size: 0.75rem; color: var(--text-mute); text-transform: uppercase; margin-top: 0.3rem; }
+
+    /* ── DIAGRAM ── */
+    .diagram-block {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.6rem 1.2rem;
+      margin: 1.5rem 0;
+    }
+    .diagram-flow { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.5rem; }
+    .flow-node {
+      background: var(--node-bg);
+      border: 1px solid var(--node-border);
+      padding: 0.6rem 1.2rem;
       border-radius: 40px;
-      color: white;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .flow-arrow { color: #666; font-size: 1.2rem; }
+
+    /* ── TABLE ── */
+    .simple-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: clamp(0.82rem, 2vw, 0.9rem); }
+    .simple-table th,
+    .simple-table td { border-bottom: 1px solid var(--border); padding: 0.9rem 0.5rem; text-align: left; vertical-align: top; }
+    .simple-table th { font-weight: 600; color: #fff; width: 30%; padding-right: 1rem; }
+
+    hr { border: none; height: 1px; background: var(--border); margin: 1.8rem 0; }
+
+    /* ── BOTTOM CTA ── */
+    .cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0 2rem 0; }
+    .btn-outline-small {
+      border: 1px solid #fff;
+      background: transparent;
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      color: #fff;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       font-weight: 500;
+      font-size: 0.85rem;
       transition: 0.2s;
     }
-    .btn-outline-small:hover {
-      background: white;
-      color: black;
+    .btn-outline-small:hover { background: #fff; color: #000; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #666;
     }
 
+    /* ── ANIMATION ── */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-up.revealed { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════
+       MOBILE ≤ 680px
+    ══════════════════════════ */
     @media (max-width: 680px) {
-      .cs-title { font-size: 2.4rem; }
-      .container { padding: 0 1.2rem; }
-      .section-title { font-size: 1.7rem; }
+      .container { padding: 0 1.1rem; }
+      .logo { font-size: 1.4rem; }
+      .back-link { padding: 0.45rem 0.85rem; font-size: 0.82rem; }
+      .back-link .back-text { display: none; }
+      .paper-header { padding: 2rem 0 1.2rem 0; }
+      .paper-subtitle { max-width: 100%; }
+      .paper-meta { gap: 0.5rem 1rem; font-size: 0.78rem; }
+      .diagram-flow { flex-direction: column; align-items: center; }
+      .flow-arrow { display: none; }
+      .flow-node { width: 100%; max-width: 260px; text-align: center; }
+      .grid-2col { gap: 1.2rem; }
+      .grid-2col > div { min-width: 100%; flex: none; width: 100%; }
+      .simple-table,
+      .simple-table tbody,
+      .simple-table tr,
+      .simple-table th,
+      .simple-table td { display: block; width: 100%; }
+      .simple-table tr { margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; }
+      .simple-table th { width: 100%; padding-bottom: 0.2rem; border-bottom: none; font-size: 0.78rem; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.5px; }
+      .simple-table td { padding: 0; border-bottom: none; }
+      .metric-card { min-width: calc(50% - 0.6rem); }
     }
-
-    /* reveal animation (simple) */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.revealed {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 380px) {
+      .cta-row { flex-direction: column; align-items: stretch; }
+      .btn-outline-small { width: 100%; justify-content: center; }
+      .metric-card { min-width: 100%; }
     }
   </style>
 </head>
@@ -300,16 +270,20 @@
 <nav class="navbar">
   <div class="container nav-container">
     <a href="#" class="logo">luqman.cc</a>
-    <a href="javascript:history.back()" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    <a href="javascript:history.back()" class="back-link">
+      <i class="fas fa-arrow-left"></i>
+      <span class="back-text">Back to Portfolio</span>
+    </a>
   </div>
 </nav>
 
-<main>
-  <div class="container cs-hero fade-up">
-    <div class="cs-badge"><i class="fas fa-microchip"></i> ENGINEERING DEEP DIVE</div>
-    <h1 class="cs-title">Driverless Web-to-Print Infrastructure</h1>
-    <div class="cs-subtitle">A Python-based server solution designed to bypass administrative privilege bottlenecks and driver compatibility issues in a corporate environment.</div>
-    <div class="cs-meta">
+<main class="container">
+
+  <div class="paper-header fade-up">
+    <div class="paper-badge"><i class="fas fa-microchip"></i> CASE STUDY · ENGINEERING DEEP DIVE</div>
+    <h1 class="paper-title">Driverless Web-to-Print Infrastructure</h1>
+    <div class="paper-subtitle">A Python-based server solution designed to bypass administrative privilege bottlenecks and driver compatibility issues in a corporate environment.</div>
+    <div class="paper-meta">
       <span><i class="fas fa-calendar-alt"></i> 2025</span>
       <span><i class="fas fa-code-branch"></i> Flask · PyCUPS · macOS</span>
       <span><i class="fas fa-print"></i> Epson L3210</span>
@@ -317,185 +291,137 @@
   </div>
 
   <!-- 01 Problem Statement -->
-  <section class="fade-up">
-    <div class="container">
-      <h2 class="section-title">01. The Problem Statement</h2>
-      <div class="grid-2col">
-        <div class="text-block">
-          <p>In a structured corporate network, security protocols often restrict users from installing local printer drivers. This creates a <strong>"Technical Bureaucracy"</strong> where:</p>
-          <ul style="margin-left: 1.5rem; margin-top: 0.5rem; list-style: disc; color: #ddd;">
-            <li><strong>Administrative Barriers:</strong> Adding a printer (like the Epson L3210) requires IT Administrator privileges.</li>
-            <li><strong>Platform Fragmentation:</strong> Diverse devices (Windows, macOS, Android, iOS) require different driver versions.</li>
-            <li><strong>Efficiency Loss:</strong> Employees face significant downtime waiting for IT support just to execute a simple print job.</li>
-          </ul>
-          <p style="margin-top: 1rem;"><strong>The Goal:</strong> To create a centralized, platform-agnostic gateway where any device with a browser can print instantly without local configuration.</p>
-        </div>
-        <div class="info-card">
-          <h3><i class="fas fa-chart-line"></i> Impact metrics</h3>
-          <ul>
-            <li><i class="fas fa-ban"></i> Zero driver installs required</li>
-            <li><i class="fas fa-mobile-alt"></i> 100% cross-platform parity</li>
-            <li><i class="fas fa-ticket-alt"></i> 78% reduction in printer-related tickets</li>
-          </ul>
-        </div>
-      </div>
+  <div class="paper-section fade-up">
+    <div class="section-number">01</div>
+    <h2 class="section-heading">Problem Statement</h2>
+    <p>In a structured corporate network, security protocols often restrict users from installing local printer drivers. This creates a <strong>"Technical Bureaucracy"</strong> where:</p>
+    <ul class="list-styled">
+      <li><i class="fas fa-lock"></i> <strong>Administrative Barriers</strong> – Adding a printer like the Epson L3210 requires IT Administrator privileges.</li>
+      <li><i class="fas fa-th-large"></i> <strong>Platform Fragmentation</strong> – Diverse devices (Windows, macOS, Android, iOS) require different driver versions.</li>
+      <li><i class="fas fa-hourglass-half"></i> <strong>Efficiency Loss</strong> – Employees face significant downtime waiting for IT support just to execute a simple print job.</li>
+    </ul>
+    <p><strong>Core objective:</strong> To create a centralized, platform-agnostic gateway where any device with a browser can print instantly — without local configuration.</p>
+    <div class="metric-row">
+      <div class="metric-card"><div class="metric-number">0</div><div class="metric-label">Driver Installs Required</div></div>
+      <div class="metric-card"><div class="metric-number">100%</div><div class="metric-label">Cross-Platform Parity</div></div>
+      <div class="metric-card"><div class="metric-number">78%</div><div class="metric-label">Fewer IT Tickets</div></div>
     </div>
-  </section>
+  </div>
 
-  <!-- 02 System Architecture & Tech Stack -->
-  <section class="fade-up">
-    <div class="container">
-      <h2 class="section-title">02. System Architecture & Tech Stack</h2>
-      <p style="margin-bottom: 1.5rem;">I architected a <strong>Server-Side Driver (SSD) Model</strong>. Instead of the client processing the print job, the client simply "submits" data to a macOS-hosted server that handles the heavy lifting.</p>
-      <div class="grid-2col">
-        <div class="text-block">
-          <h3 style="margin-bottom: 1rem;">🔧 The Core Stack</h3>
-          <ul style="list-style: none;">
-            <li><i class="fas fa-cogs"></i> <strong>Engine:</strong> Python 3.x – high-level system interaction</li>
-            <li><i class="fas fa-globe"></i> <strong>Web Layer:</strong> Flask (micro-framework) – lightweight & rapid request handling</li>
-            <li><i class="fas fa-print"></i> <strong>System Bridge:</strong> PyCUPS – Python binding for CUPS (Common Unix Printing System)</li>
-            <li><i class="fas fa-ethernet"></i> <strong>Target Hardware:</strong> Epson L3210 (USB/Ethernet)</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <h3><i class="fas fa-server"></i> Why macOS + CUPS?</h3>
-          <p>CUPS natively supports driverless printing (IPP Everywhere) and provides a stable spooler API. Using PyCUPS, the Flask server talks directly to the print spooler, eliminating client-side driver dependencies.</p>
-        </div>
+  <!-- 02 Design Logic: Server-Side Driver Model -->
+  <div class="paper-section fade-up">
+    <div class="section-number">02</div>
+    <h2 class="section-heading">Design Logic: Server-Side Driver Model</h2>
+    <p>I architected a <strong>Server-Side Driver (SSD) Model</strong>. Instead of the client processing the print job, the client simply submits data to a macOS-hosted server that handles the heavy lifting.</p>
+    <div class="grid-2col">
+      <div>
+        <h3 class="section-subhead">🔧 Core Stack</h3>
+        <ul class="list-styled">
+          <li><i class="fas fa-cogs"></i> <strong>Engine:</strong> Python 3.x — high-level system interaction.</li>
+          <li><i class="fas fa-globe"></i> <strong>Web Layer:</strong> Flask (micro-framework) — lightweight & rapid request handling.</li>
+          <li><i class="fas fa-print"></i> <strong>System Bridge:</strong> PyCUPS — Python binding for CUPS (Common Unix Printing System).</li>
+          <li><i class="fas fa-ethernet"></i> <strong>Target Hardware:</strong> Epson L3210 (USB/Ethernet).</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="section-subhead">🖥 Why macOS + CUPS?</h3>
+        <p>CUPS natively supports driverless printing (IPP Everywhere) and provides a stable spooler API. Using PyCUPS, the Flask server talks directly to the print spooler, eliminating all client-side driver dependencies.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- 03 SYSTEM DIAGRAM (VISUAL FLOW) -->
-  <section class="fade-up">
-    <div class="container">
-      <h2 class="section-title">System Data Flow</h2>
-      <div class="diagram-container">
-        <div class="diagram-title"><i class="fas fa-project-diagram"></i> Request-Handshake-Purge Lifecycle</div>
-        <div class="flow-diagram">
-          <div class="flow-node"><i class="fas fa-laptop-code"></i> User Device</div>
-          <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
-          <div class="flow-node"><i class="fas fa-wifi"></i> WiFi / LAN</div>
-          <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
-          <div class="flow-node"><i class="fas fa-cloud-upload-alt"></i> Flask Server (:7777)</div>
-          <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
-          <div class="flow-node"><i class="fas fa-database"></i> CUPS Spooler</div>
-          <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
-          <div class="flow-node"><i class="fas fa-print"></i> Epson L3210</div>
-        </div>
-        <p style="text-align: center; margin-top: 1.8rem; font-size: 0.9rem; color: #aaa;"><i class="fas fa-trash-alt"></i> Zero-trace purge: temp files removed after successful buffering</p>
+  <!-- 03 Technical Infrastructure -->
+  <div class="paper-section fade-up">
+    <div class="section-number">03</div>
+    <h2 class="section-heading">Technical Infrastructure & Performance</h2>
+    <p>Every print request follows a strict Request → Handshake → Purge lifecycle with no persistent footprint.</p>
+    <div class="diagram-block">
+      <div class="diagram-flow">
+        <span class="flow-node"><i class="fas fa-laptop-code"></i> User Device</span>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <span class="flow-node"><i class="fas fa-wifi"></i> WiFi / LAN</span>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <span class="flow-node"><i class="fas fa-cloud-upload-alt"></i> Flask Server (:7777)</span>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <span class="flow-node"><i class="fas fa-database"></i> CUPS Spooler</span>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <span class="flow-node"><i class="fas fa-print"></i> Epson L3210</span>
       </div>
+      <p style="text-align:center;margin-top:1rem;font-size:0.75rem;color:#888;">
+        <i class="fas fa-trash-alt"></i> Zero-trace purge: temp files removed after successful buffering
+      </p>
     </div>
-  </section>
+  </div>
 
   <!-- 04 Deep Technical Workflow -->
-  <section class="fade-up">
-    <div class="container">
-      <h2 class="section-title">03. Deep Technical Workflow</h2>
-      <div class="grid-2col" style="margin-bottom: 1rem;">
-        <div class="text-block">
-          <h3>A. The Ingestion Phase</h3>
-          <p>Users access the portal via dedicated local IP at port <code>7777</code>. The interface is built with responsive HTML5/CSS3, allowing mobile users to upload documents directly from their phones. Files are transmitted via <code>multipart/form-data</code> POST requests.</p>
-          <h3 style="margin-top: 1.5rem;">B. The CUPS Handshake</h3>
-          <p>Once Flask receives the file, it validates integrity, identifies the Epson L3210 destination using <code>cups.Connection()</code>, and maps user options (copies, duplex) into a Python dictionary passed as CUPS options.</p>
-        </div>
-        <div class="text-block">
-          <h3>C. "Zero-Trace" Security Protocol</h3>
-          <p>To maintain data confidentiality in a shared office environment, I implemented an automated cleanup routine. After the CUPS daemon confirms the job has been buffered into the printer’s physical memory, the server executes <code>os.remove</code> to wipe the temporary upload directory.</p>
-          <div style="background: #0a0a0a; padding: 0.8rem; border-radius: 16px; margin-top: 1rem; font-family: monospace; font-size: 0.85rem; border-left: 3px solid white;">
-            <i class="fas fa-code"></i> shutil / os.remove(tmp_path) → No persistent documents
-          </div>
-        </div>
+  <div class="paper-section fade-up">
+    <div class="section-number">04</div>
+    <h2 class="section-heading">Deep Technical Workflow</h2>
+    <div class="grid-2col">
+      <div>
+        <h3 class="section-subhead">A. Ingestion Phase</h3>
+        <p>Users access the portal via dedicated local IP at port <code>7777</code>. The interface is built with responsive HTML5/CSS3, allowing mobile users to upload documents directly from their phones. Files are transmitted via <code>multipart/form-data</code> POST requests.</p>
+        <h3 class="section-subhead">B. CUPS Handshake</h3>
+        <p>Once Flask receives the file, it validates integrity, identifies the Epson L3210 destination using <code>cups.Connection()</code>, and maps user options (copies, duplex) into a Python dictionary passed as CUPS job options.</p>
+      </div>
+      <div>
+        <h3 class="section-subhead">C. Zero-Trace Security</h3>
+        <p>To maintain data confidentiality, automated cleanup executes once CUPS confirms buffering. <code>shutil / os.remove(tmp_path)</code> → No persistent documents.</p>
       </div>
     </div>
-  </section>
+    <h3 class="section-subhead">Challenges & Solutions</h3>
+    <table class="simple-table">
+      <tr><th>Driver Mismatch</th><td>macOS host handles all processing. Client sees web form → driverless IPP.</td></tr>
+      <tr><th>Connection Drops</th><td>Pulse-Check script monitors/reinitializes CUPS queue automatically.</td></tr>
+      <tr><th>Storage Bloat</th><td>Temporary buffers purged post-print (Zero-Trace).</td></tr>
+    </table>
+  </div>
 
-  <!-- 05 Key Challenges & Solutions Table -->
-  <section class="fade-up">
-    <div class="container">
-      <h2 class="section-title">04. Key Challenges & Solutions</h2>
-      <table class="challenge-table">
-        <thead>
-          <tr><th>Challenge</th><th>Engineering Solution</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Driver Mismatch</strong> – Every OS requires different drivers</td><td>Shifted all driver processing to the macOS Host. Client only sees a standard Web Form → driverless via IPP.</td></tr>
-          <tr><td><strong>Connection Drops</strong> – Network interruptions break print spooling</td><td>Developed a <strong>Pulse-Check</strong> script that monitors the Epson L3210 status and can re-initialize the CUPS queue automatically.</td></tr>
-          <tr><td><strong>Storage Bloat</strong> – Uploaded files consume disk space</td><td>Implemented a <strong>Temporary Buffer Logic</strong> that ensures no document persists on the server post-printing (Zero-Trace).</td></tr>
-        </tbody>
-      </table>
+  <!-- 05 Results -->
+  <div class="paper-section fade-up">
+    <div class="section-number">05</div>
+    <h2 class="section-heading">Results & Technical Takeaways</h2>
+    <ul class="list-styled">
+      <li><i class="fas fa-check-circle"></i> <strong>Zero-Config:</strong> No "Add Printer" on 50+ devices.</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Cross-Platform:</strong> Android/iOS printing without Epson drivers.</li>
+      <li><i class="fas fa-check-circle"></i> <strong>IT Reduction:</strong> Centralized server cut support tickets.</li>
+    </ul>
+    <div class="metric-row">
+      <div class="metric-card"><div class="metric-number">45 min</div><div class="metric-label">Old Setup</div></div>
+      <div class="metric-card"><div class="metric-number">1.5 min</div><div class="metric-label">New Setup</div></div>
+      <div class="metric-card"><div class="metric-number">94%</div><div class="metric-label">Adoption</div></div>
     </div>
-  </section>
+  </div>
 
-  <!-- 06 Impact & Results -->
-  <section class="fade-up">
-    <div class="container">
-      <h2 class="section-title">05. Impact & Results</h2>
-      <div class="grid-2col">
-        <div class="text-block">
-          <ul style="list-style: none;">
-            <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: #fff;"></i> <strong>Zero-Config Access:</strong> Eliminated "Add Printer" workflows on 50+ employee devices.</li>
-            <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: #fff;"></i> <strong>Cross-Platform Parity:</strong> Enabled seamless printing from Android and iOS devices which previously lacked driver support for the Epson L3210.</li>
-            <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: #fff;"></i> <strong>Reduced IT Overhead:</strong> Decreased printer-related support tickets by centralizing the point of failure to a single, manageable server.</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <h3><i class="fas fa-chart-simple"></i> Measurable efficiency</h3>
-          <p>📉 Average print setup time: from 45 min → <strong>1.5 min</strong>.<br>📈 User adoption rate: 94% within first two weeks.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 Future Roadmap -->
-  <section class="fade-up">
-    <div class="container">
-      <h2 class="section-title">06. Future Roadmap</h2>
-      <div class="grid-2col">
-        <div class="text-block">
-          <ul class="roadmap-list">
-            <li><i class="fas fa-lock"></i> <strong>Authentication Layer:</strong> Adding a lightweight login system (JWT + LDAP) to track printing quotas and user activity.</li>
-            <li><i class="fas fa-eye"></i> <strong>Print Preview:</strong> Integrating a PDF-to-Image renderer (PyMuPDF) to allow users to preview documents before committing to physical print.</li>
-            <li><i class="fas fa-chart-pie"></i> <strong>Analytics Dashboard:</strong> Real-time usage metrics and ink level monitoring via SNMP.</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <h3><i class="fas fa-rocket"></i> Next iteration</h3>
-          <p>Planned migration to containerized deployment (Docker + CUPS inside) to allow easy scaling across multiple office floors.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to action & back -->
-  <section style="border-bottom: none; padding-bottom: 3rem;">
-    <div class="container" style="text-align: center;">
+  <!-- 06 Engineering Reflection (from old 07) -->
+  <div class="paper-section fade-up">
+    <div class="section-number">06</div>
+    <h2 class="section-heading">Engineering Reflection</h2>
+    <p>This driverless infrastructure proves centralizing complexity creates resilient access. Planned: JWT auth for quotas, PyMuPDF previews, SNMP analytics, Docker scaling for multi-floor use.</p>
+    <p><strong>Centralize complexity, simplify access.</strong> From IT frustration to production-grade solution for dozens daily.</p>
+    <hr>
+    <div class="cta-row">
       <a href="javascript:history.back()" class="btn-outline-small"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
-      <a href="#" style="margin-left: 1rem;" class="btn-outline-small"><i class="fab fa-github"></i> View Repository</a>
+      <a href="#" class="btn-outline-small"><i class="fab fa-github"></i> View Repository</a>
     </div>
-  </section>
+  </div>
+
 </main>
 
 <footer>
   <div class="container">
-    <p>© 2026 luqman.cc — Designed with <i class="fas fa-heart" style="color: #fff;"></i> for interactive excellence.</p>
+    <p>© 2026 luqman.cc — Designed with <i class="fas fa-heart" style="color:#fff;"></i> for interactive excellence.</p>
   </div>
 </footer>
 
 <script>
-  // Intersection Observer for fade-up (same interactive feel)
   const fadeElements = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
     });
-  }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
   fadeElements.forEach(el => observer.observe(el));
-
-  // small console greeting
-  console.log("Case study: Driverless Print Server | Flask + CUPS Architecture");
 </script>
 </body>
 </html>
