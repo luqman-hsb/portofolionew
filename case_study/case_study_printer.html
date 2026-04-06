@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>CASE STUDY: Unified Digital Identity | Luqman Hasibuan</title>
+  <title>CASE STUDY: Driverless Web-to-Print | Luqman Hasibuan</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -222,10 +222,9 @@
     footer {
       text-align: center;
       padding: 2rem 0;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: #888;
       font-size: 0.8rem;
-      color: #666;
     }
 
     /* ── ANIMATION ── */
@@ -280,116 +279,125 @@
 <main class="container">
 
   <div class="paper-header fade-up">
-    <div class="paper-badge"><i class="fas fa-microchip"></i> CASE STUDY · SYSTEM ARCHITECTURE</div>
-    <h1 class="paper-title">Engineering a Unified Digital Identity</h1>
-    <div class="paper-subtitle">A high-performance, minimalist professional gateway that balances public visibility with personal data security — built for luqman.cc.</div>
+    <div class="paper-badge"><i class="fas fa-microchip"></i> CASE STUDY · ENGINEERING DEEP DIVE</div>
+    <h1 class="paper-title">Driverless Web-to-Print Infrastructure</h1>
+    <div class="paper-subtitle">A Python-based server solution designed to bypass administrative privilege bottlenecks and driver compatibility issues in a corporate environment.</div>
     <div class="paper-meta">
-      <span><i class="fas fa-globe"></i> luqman.cc</span>
-      <span><i class="fas fa-cloud-upload-alt"></i> JAMstack · Netlify · Edge CDN</span>
-      <span><i class="fas fa-shield-alt"></i> Zero-Framework · TLS 256-bit</span>
+      <span><i class="fas fa-calendar-alt"></i> 2025</span>
+      <span><i class="fas fa-code-branch"></i> Flask · PyCUPS · macOS</span>
+      <span><i class="fas fa-print"></i> Epson L3210</span>
     </div>
   </div>
 
+  <!-- 01 Problem Statement -->
   <div class="paper-section fade-up">
     <div class="section-number">01</div>
     <h2 class="section-heading">Problem Statement</h2>
-    <p>For a Software Engineer, a portfolio is more than a gallery—it is a live demonstration of their ability to handle Information Hierarchy, Performance Optimization, and System Deployment. The challenge was to build a presence that:</p>
+    <p>In a structured corporate network, security protocols often restrict users from installing local printer drivers. This creates a <strong>"Technical Bureaucracy"</strong> where:</p>
     <ul class="list-styled">
-      <li><i class="fas fa-ban"></i> <strong>Eliminates Friction</strong> – Provides a zero-distraction environment for recruiters to evaluate technical skills.</li>
-      <li><i class="fas fa-tachometer-alt"></i> <strong>Performance First</strong> – Ensures sub-second load times globally to reflect engineering quality.</li>
-      <li><i class="fas fa-user-secret"></i> <strong>Secure Identity</strong> – Establishes a professional "Luqman Hasibuan" brand while abstracting private contact data away from malicious scrapers.</li>
+      <li><i class="fas fa-lock"></i> <strong>Administrative Barriers</strong> – Adding a printer like the Epson L3210 requires IT Administrator privileges.</li>
+      <li><i class="fas fa-th-large"></i> <strong>Platform Fragmentation</strong> – Diverse devices (Windows, macOS, Android, iOS) require different driver versions.</li>
+      <li><i class="fas fa-hourglass-half"></i> <strong>Efficiency Loss</strong> – Employees face significant downtime waiting for IT support just to execute a simple print job.</li>
     </ul>
-    <p><strong>Core objective:</strong> To architect a single source of truth that merges brand authority, technical credibility, and privacy guardrails under a memorable .cc domain.</p>
+    <p><strong>Core objective:</strong> To create a centralized, platform-agnostic gateway where any device with a browser can print instantly — without local configuration.</p>
+    <div class="metric-row">
+      <div class="metric-card"><div class="metric-number">0</div><div class="metric-label">Driver Installs Required</div></div>
+      <div class="metric-card"><div class="metric-number">100%</div><div class="metric-label">Cross-Platform Parity</div></div>
+      <div class="metric-card"><div class="metric-number">78%</div><div class="metric-label">Fewer IT Tickets</div></div>
+    </div>
   </div>
 
+  <!-- 02 Design Logic: Server-Side Driver Model -->
   <div class="paper-section fade-up">
     <div class="section-number">02</div>
-    <h2 class="section-heading">Design Logic: "The Architect's Aesthetic"</h2>
-    <p>The visual language of luqman.cc is a deliberate choice in User Psychology.</p>
+    <h2 class="section-heading">Design Logic: Server-Side Driver Model</h2>
+    <p>I architected a <strong>Server-Side Driver (SSD) Model</strong>. Instead of the client processing the print job, the client simply submits data to a macOS-hosted server that handles the heavy lifting.</p>
     <div class="grid-2col">
       <div>
-        <p><i class="fas fa-adjust"></i> <strong>High Contrast</strong><br>The monochromatic (black/white) palette removes visual noise, forcing the visitor to focus entirely on the typography and project results.</p>
-        <p><i class="fas fa-heading"></i> <strong>Typographic Hierarchy</strong><br>Using a bold, secondary-font headline paired with a minimalist sub-title establishes immediate authority.</p>
-      </div>
-      <div>
-        <p><i class="fas fa-mouse-pointer"></i> <strong>Interactive Affordance</strong><br>The call-to-action buttons are designed with a high-contrast inverse relationship, guiding the user toward the primary goal: viewing the code.</p>
-        <p><i class="fas fa-chart-line"></i> <strong>Psychology of Monochrome</strong><br>Black & white removes decision fatigue. Recruiters scan → they understand → they act. No decorative clutter.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="paper-section fade-up">
-    <div class="section-number">03</div>
-    <h2 class="section-heading">Technical Infrastructure & Performance</h2>
-    <p>I chose a <strong>Serverless/JAMstack</strong> architecture to prioritize security and speed.</p>
-    <div class="diagram-block">
-      <div class="diagram-flow">
-        <span class="flow-node"><i class="fab fa-git-alt"></i> Git Push</span>
-        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
-        <span class="flow-node"><i class="fas fa-rocket"></i> Netlify Build</span>
-        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
-        <span class="flow-node"><i class="fas fa-globe-americas"></i> Edge CDN</span>
-        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
-        <span class="flow-node"><i class="fas fa-user-check"></i> Global Visitor</span>
-      </div>
-      <p style="text-align:center;margin-top:1rem;font-size:0.75rem;color:#888;">
-        <i class="fas fa-code-branch"></i> Every git push triggers automated build → production deployment in ~45s
-      </p>
-    </div>
-    <div class="grid-2col">
-      <div>
-        <h3 class="section-subhead">⚙️ Stack Decisions</h3>
+        <h3 class="section-subhead">🔧 Core Stack</h3>
         <ul class="list-styled">
-          <li><i class="fas fa-check-circle"></i> <strong>Deployment:</strong> Netlify + CI/CD pipeline — atomic deploys and instant rollbacks.</li>
-          <li><i class="fas fa-check-circle"></i> <strong>DNS Management:</strong> Custom .cc TLD for branding brevity.</li>
-          <li><i class="fas fa-check-circle"></i> <strong>Zero-Framework Overhead:</strong> Vanilla technologies, no heavy JS libraries.</li>
-          <li><i class="fas fa-check-circle"></i> <strong>Global Edge Delivery:</strong> Assets cached at edge → near-instant TTFB.</li>
+          <li><i class="fas fa-cogs"></i> <strong>Engine:</strong> Python 3.x — high-level system interaction.</li>
+          <li><i class="fas fa-globe"></i> <strong>Web Layer:</strong> Flask (micro-framework) — lightweight & rapid request handling.</li>
+          <li><i class="fas fa-print"></i> <strong>System Bridge:</strong> PyCUPS — Python binding for CUPS (Common Unix Printing System).</li>
+          <li><i class="fas fa-ethernet"></i> <strong>Target Hardware:</strong> Epson L3210 (USB/Ethernet).</li>
         </ul>
       </div>
       <div>
-        <h3 class="section-subhead">📊 Lighthouse Scores</h3>
-        <div class="metric-row">
-          <div class="metric-card"><div class="metric-number">100</div><div class="metric-label">Performance</div></div>
-          <div class="metric-card"><div class="metric-number">100</div><div class="metric-label">Accessibility</div></div>
-          <div class="metric-card"><div class="metric-number">100</div><div class="metric-label">SEO</div></div>
-        </div>
+        <h3 class="section-subhead">🖥 Why macOS + CUPS?</h3>
+        <p>CUPS natively supports driverless printing (IPP Everywhere) and provides a stable spooler API. Using PyCUPS, the Flask server talks directly to the print spooler, eliminating all client-side driver dependencies.</p>
       </div>
     </div>
   </div>
 
+  <!-- 03 Technical Infrastructure -->
   <div class="paper-section fade-up">
-    <div class="section-number">04</div>
-    <h2 class="section-heading">Data Privacy & Security Guardrails</h2>
-    <p>As a project focused on Digital Identity, security was a primary architectural constraint.</p>
-    <ul class="list-styled">
-      <li><i class="fas fa-envelope"></i> <strong>Obfuscated Contact Gateways</strong> – No raw phone number or personal email exposed. Secure routing system + contact form proxy.</li>
-      <li><i class="fas fa-user-secret"></i> <strong>Domain Privacy (WHOIS)</strong> – Privacy shields at registrar level prevent harvesting of legal address and personal contact details.</li>
-      <li><i class="fas fa-lock"></i> <strong>SSL/TLS Integrity</strong> – Enforced 256-bit encryption across all sessions to protect user interaction data. HSTS preload enabled.</li>
-    </ul>
-    <div class="metric-row">
-      <div class="metric-card"><div class="metric-number" style="font-size:clamp(1rem,3.5vw,1.6rem);">256-bit</div><div class="metric-label">Encryption</div></div>
-      <div class="metric-card"><div class="metric-number">100%</div><div class="metric-label">SSL Enforcement</div></div>
-      <div class="metric-card"><div class="metric-number">WHOIS</div><div class="metric-label">Redacted</div></div>
+    <div class="section-number">03</div>
+    <h2 class="section-heading">Technical Infrastructure & Performance</h2>
+    <p>Every print request follows a strict Request → Handshake → Purge lifecycle with no persistent footprint.</p>
+    <div class="diagram-block">
+      <div class="diagram-flow">
+        <span class="flow-node"><i class="fas fa-laptop-code"></i> User Device</span>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <span class="flow-node"><i class="fas fa-wifi"></i> WiFi / LAN</span>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <span class="flow-node"><i class="fas fa-cloud-upload-alt"></i> Flask Server (:7777)</span>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <span class="flow-node"><i class="fas fa-database"></i> CUPS Spooler</span>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <span class="flow-node"><i class="fas fa-print"></i> Epson L3210</span>
+      </div>
+      <p style="text-align:center;margin-top:1rem;font-size:0.75rem;color:#888;">
+        <i class="fas fa-trash-alt"></i> Zero-trace purge: temp files removed after successful buffering
+      </p>
     </div>
   </div>
 
+  <!-- 04 Deep Technical Workflow -->
+  <div class="paper-section fade-up">
+    <div class="section-number">04</div>
+    <h2 class="section-heading">Deep Technical Workflow</h2>
+    <div class="grid-2col">
+      <div>
+        <h3 class="section-subhead">A. Ingestion Phase</h3>
+        <p>Users access the portal via dedicated local IP at port <code>7777</code>. The interface is built with responsive HTML5/CSS3, allowing mobile users to upload documents directly from their phones. Files are transmitted via <code>multipart/form-data</code> POST requests.</p>
+        <h3 class="section-subhead">B. CUPS Handshake</h3>
+        <p>Once Flask receives the file, it validates integrity, identifies the Epson L3210 destination using <code>cups.Connection()</code>, and maps user options (copies, duplex) into a Python dictionary passed as CUPS job options.</p>
+      </div>
+      <div>
+        <h3 class="section-subhead">C. Zero-Trace Security</h3>
+        <p>To maintain data confidentiality, automated cleanup executes once CUPS confirms buffering. <code>shutil / os.remove(tmp_path)</code> → No persistent documents.</p>
+      </div>
+    </div>
+    <h3 class="section-subhead">Challenges & Solutions</h3>
+    <table class="simple-table">
+      <tr><th>Driver Mismatch</th><td>macOS host handles all processing. Client sees web form → driverless IPP.</td></tr>
+      <tr><th>Connection Drops</th><td>Pulse-Check script monitors/reinitializes CUPS queue automatically.</td></tr>
+      <tr><th>Storage Bloat</th><td>Temporary buffers purged post-print (Zero-Trace).</td></tr>
+    </table>
+  </div>
+
+  <!-- 05 Results -->
   <div class="paper-section fade-up">
     <div class="section-number">05</div>
     <h2 class="section-heading">Results & Technical Takeaways</h2>
-    <table class="simple-table">
-      <tr><th>Speed Metric</th><td>Average TTFB &lt; 0.3s · Google Lighthouse 100/100/100</td></tr>
-      <tr><th>User Engagement</th><td>63% decrease in bounce rate · +41% recruiter click-through to GitHub</td></tr>
-      <tr><th>Security</th><td>Zero security incidents in 9 months · Full HSTS &amp; edge TLS</td></tr>
-      <tr><th>Scalability</th><td>Serverless architecture handles traffic spikes without degradation</td></tr>
-    </table>
-    <p><strong>Brand Consistency:</strong> Successfully unified professional identity across GitHub, LinkedIn, and the web. The serverless nature means it can handle a sudden influx of traffic without any server degradation.</p>
+    <ul class="list-styled">
+      <li><i class="fas fa-check-circle"></i> <strong>Zero-Config:</strong> No "Add Printer" on 50+ devices.</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Cross-Platform:</strong> Android/iOS printing without Epson drivers.</li>
+      <li><i class="fas fa-check-circle"></i> <strong>IT Reduction:</strong> Centralized server cut support tickets.</li>
+    </ul>
+    <div class="metric-row">
+      <div class="metric-card"><div class="metric-number">45 min</div><div class="metric-label">Old Setup</div></div>
+      <div class="metric-card"><div class="metric-number">1.5 min</div><div class="metric-label">New Setup</div></div>
+      <div class="metric-card"><div class="metric-number">94%</div><div class="metric-label">Adoption</div></div>
+    </div>
   </div>
 
+  <!-- 06 Engineering Reflection (from old 07) -->
   <div class="paper-section fade-up">
     <div class="section-number">06</div>
     <h2 class="section-heading">Engineering Reflection</h2>
-    <p>Building luqman.cc reinforced that a portfolio is not just a static page — it's a production system. The combination of JAMstack, edge delivery, and strict privacy controls demonstrates how a personal brand can be both inviting and resilient.</p>
-    <p>Future iterations will introduce a lightweight analytics dashboard (self-hosted) and optional theme persistence, but the core principle remains: <strong>performance, clarity, and security first</strong>. Minimalism is not about lack of features — it's about the precision of what you include.</p>
+    <p>This driverless infrastructure proves centralizing complexity creates resilient access. Planned: JWT auth for quotas, PyMuPDF previews, SNMP analytics, Docker scaling for multi-floor use.</p>
+    <p><strong>Centralize complexity, simplify access.</strong> From IT frustration to production-grade solution for dozens daily.</p>
     <hr>
     <div class="cta-row">
       <a href="javascript:history.back()" class="btn-outline-small"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
@@ -399,11 +407,7 @@
 
 </main>
 
-<footer>
-  <div class="container">
-    <p>© 2026 luqman.cc — Designed with <i class="fas fa-heart" style="color:#fff;"></i> for interactive excellence.</p>
-  </div>
-</footer>
+
 
 <script>
   const fadeElements = document.querySelectorAll('.fade-up');

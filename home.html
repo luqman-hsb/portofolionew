@@ -15,13 +15,28 @@
       box-sizing: border-box;
     }
 
+    /* ── SHARED DESIGN TOKENS ── */
+    :root {
+      --bg: #000;
+      --text: #e8e8e8;
+      --text-dim: #ddd;
+      --text-mute: #aaa;
+      --text-faint: #888;
+      --border: rgba(255,255,255,0.08);
+      --border-section: rgba(255,255,255,0.1);
+      --surface: rgba(255,255,255,0.03);
+      --node-bg: #0c0c0c;
+      --node-border: #2a2a2a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      background-color: #000000;
-      color: #ffffff;
+      background-color: var(--bg);
+      color: var(--text);
       font-family: 'Inter', sans-serif;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
+      line-height: 1.55;
+      font-weight: 400;
     }
 
     a, button, .project-card, .skill-tag, .social-icon, .nav-link {
@@ -40,21 +55,22 @@
       top: 0;
       left: 0;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
+      background-color: rgba(0, 0, 0, 0.92);
       backdrop-filter: blur(12px);
       z-index: 1000;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 1rem 0;
+      padding: 1.2rem 0;
     }
 
     .nav-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       background: linear-gradient(135deg, #ffffff, #b0b0b0);
@@ -66,7 +82,7 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
       list-style: none;
     }
 
@@ -74,7 +90,7 @@
       color: #ffffff;
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 1rem;
       letter-spacing: -0.2px;
       position: relative;
       padding-bottom: 4px;
@@ -95,13 +111,14 @@
       width: 100%;
     }
 
+    .nav-link:hover {
+      opacity: 0.8;
+    }
+
     .menu-icon {
       display: none;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       cursor: pointer;
-      color: #ffffff;
-      background: none;
-      border: none;
     }
 
     /* ========== HERO SECTION ========== */
@@ -427,6 +444,7 @@
       font-size: 0.85rem;
     }
 
+    /* ── FOOTER ── */
     footer {
       text-align: center;
       padding: 2rem 0;
@@ -445,87 +463,55 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 0.9rem 0;
+@media (max-width: 800px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background: #000000dd;
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 2rem;
+        gap: 2rem;
+        transition: left 0.3s ease;
+        border-right: 1px solid rgba(255,255,255,0.1);
       }
-      
+      .nav-links.active {
+        left: 0;
+      }
       .menu-icon {
         display: block;
       }
       
-      .nav-links {
-        position: fixed;
-        top: 65px;
-        left: -100%;
-        width: 75%;
-        max-width: 280px;
-        height: calc(100vh - 65px);
-        background: #0a0a0a;
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding: 2rem 1.8rem;
-        gap: 1.5rem;
-        transition: left 0.3s ease;
-        border-right: 1px solid rgba(255,255,255,0.1);
-        z-index: 999;
+      .container {
+        padding: 0 1.5rem;
       }
-      
-      .nav-links.active {
-        left: 0;
-      }
-      
-      .nav-link {
-        font-size: 1.1rem;
-        width: 100%;
-        padding: 0.5rem 0;
-      }
-      
-      .hero {
-        padding: 5rem 0 3rem 0;
-        min-height: auto;
-      }
-      
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
       }
-      
-      .hero-desc {
-        font-size: 1rem;
-      }
-      
       .section-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
-      
-      .about-grid {
-        flex-direction: column;
-        gap: 1.8rem;
-      }
-      
-      .info-list {
-        width: 100%;
-      }
-      
       .projects-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
       }
-      
-      .contact-container {
-        flex-direction: column;
+    }
+
+    @media (max-width: 550px) {
+      .hero-title {
+        font-size: 2.2rem;
       }
-      
       .cta-group {
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: stretch;
       }
-      
       .btn-primary, .btn-outline {
-        padding: 0.7rem 1.5rem;
-        font-size: 0.9rem;
+        text-align: center;
+        justify-content: center;
       }
     }
 
@@ -579,13 +565,12 @@
       }
     }
 
-    @media (max-width: 380px) {
-      .hero-title {
-        font-size: 1.75rem;
+    @media (max-width: 680px) {
+      .container { 
+        padding: 0 1.1rem; 
       }
-      
-      .logo {
-        font-size: 1.3rem;
+      .logo { 
+        font-size: 1.4rem; 
       }
     }
 
@@ -641,7 +626,7 @@
       <div class="about-grid">
         <div class="about-text fade-up">
           <p>I'm a software engineer and full-stack developer focused on building secure, scalable, and high-performance web applications. My approach combines the reliability of modern backend frameworks like Laravel with clean, responsive interfaces that deliver a seamless user experience.</p>
-          <p>Currently serving as a Software Engineering Intern, I've had the opportunity to build data-driven solutions for government-level platforms. I thrive on diving deep into technical challenges—whether it's optimizing database architecture, troubleshooting hardware, or mastering complex logic.</p>
+          <p>During my tenure as a Software Engineering Intern at DISKOMINFO, I engineered data-driven solutions for government-level platforms. I focused on resolving intricate technical challenges, specifically in optimizing database architecture, conducting hardware diagnostics, and implementing complex computational logic</p>
           <p>Outside of code, you'll usually find me exploring a mix of philosophy and psychology, practicing calisthenics, or deep-diving into long-form content. I'm also a huge fan of Linux and PC hardware, always looking for ways to optimize my digital and physical setup.</p>
         </div>
         <div class="info-list fade-up">
@@ -690,15 +675,18 @@
           <div class="project-icon"><i class="fas fa-network-wired"></i></div>
           <h3 class="project-title">Driverless Print Infrastructure</h3>
           <p class="project-desc">Python-based Web-to-Print solution with Flask and PyCUPS to bypass administrative privilege bottlenecks. Centralizes print drivers on a macOS server for driverless printing to Epson L3210.</p>
-          <a href="case_study_printer.html" class="project-link">Case Study <i class="fas fa-arrow-right"></i></a>
+          <a href="case_study/case_study_printer.html" class="project-link">Case Study <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="project-card fade-up">
           <div class="project-icon"><i class="fas fa-fingerprint"></i></div>
           <h3 class="project-title">Digital Identity & Cloud Infrastructure</h3>
           <p class="project-desc">Engineered professional ecosystem on serverless architecture. High-performance delivery, minimalist UI/UX, and secure cloud deployment via Netlify for a robust digital presence.</p>
-          <a href="case_study_identity.html" class="project-link">Case Study <i class="fas fa-arrow-right"></i></a>
+          <a href="case_study/case_study_identity.html" class="project-link">Case Study <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
+      <p style="text-align: center; margin-top: 2rem; color: #aaa; font-size: 0.95rem;">
+        <a href="projects.html" style="color: #ccc; text-decoration: none;">View all projects →</a>
+      </p>
     </div>
   </section>
 

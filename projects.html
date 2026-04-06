@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | luqman.cc</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ── SHARED DESIGN TOKENS ── */
+    :root {
+      --bg: #000;
+      --text: #e8e8e8;
+      --text-dim: #ddd;
+      --text-mute: #aaa;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.55;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0,0,0,0.94);
+      backdrop-filter: blur(14px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 0;
+    }
+    .nav-container { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff, #b0b0b0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+    .back-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      transition: 0.2s;
+      font-size: 0.9rem;
+    }
+    .back-link:hover { background: rgba(255,255,255,0.05); }
+
+    /* HERO + SEARCH */
+    .hero {
+      padding: 8rem 0 3rem 0;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .search-container {
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+    .search-input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+    .search-input::placeholder {
+      color: var(--text-mute);
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.8rem 1.8rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 40px;
+      transition: 0.2s;
+    }
+    .btn-back:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* PROJECTS SECTION */
+    .projects-section {
+      padding: 2rem 0 6rem 0;
+    }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #fff;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #fff;
+    }
+
+    .category {
+      margin-bottom: 4rem;
+    }
+    .category h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .category-count {
+      color: var(--text-mute);
+      font-size: 0.9rem;
+      margin-left: 0.5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .project-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      transition: all 0.3s ease;
+    }
+    .project-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-4px);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .project-icon {
+      font-size: 2.2rem;
+      color: #ccc;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    .project-meta {
+      font-size: 0.85rem;
+      color: var(--text-mute);
+    }
+    .project-desc {
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .project-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.5rem 1.1rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 25px;
+      transition: 0.2s;
+    }
+    .project-link:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* HIDDEN CLASS */
+    .hidden {
+      display: none !important;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .container {
+        padding: 0 1.5rem;
+      }
+      .project-links {
+        flex-direction: column;
+      }
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    .fade-up.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="home.html" class="logo">luqman.cc</a>
+      <a href="home.html" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="fade-up">All Projects</h1>
+      <p class="fade-up">Comprehensive showcase of my work across various technologies and domains</p>
+      <div class="search-container fade-up">
+        <input type="text" class="search-input" placeholder="Search projects (e.g. Laravel, Python, Government...)">
+      </div>
+      <a href="home.html" class="btn-back fade-up">
+        <i class="fas fa-home"></i>
+        Back to Home
+      </a>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <div class="container">
+      <h2 class="section-title fade-up">Case Studies</h2>
+      
+      <!-- Government & Enterprise -->
+      <div class="category fade-up" data-tags="government enterprise laravel">
+        <h2>Government & Enterprise <span class="category-count">(1)</span></h2>
+        <div class="projects-grid">
+          <div class="project-card" data-tags="government enterprise laravel database">
+            <div class="project-header">
+              <div class="project-icon"><i class="fas fa-database"></i></div>
+              <div>
+                <div class="project-title">Resident Data Management System</div>
+                <div class="project-meta">Batam Government • Laravel • Database Architecture</div>
+              </div>
+            </div>
+            <p class="project-desc">Robust Laravel platform for digitizing non-permanent resident records with complex administrative workflows and professional-grade database architecture.</p>
+            <div class="project-links">
+              <a href="https://lakse.batam.go.id/riyaldi/" class="project-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Engineering -->
+      <div class="category fade-up" data-tags="system python flask cups">
+        <h2>System Engineering <span class="category-count">(2)</span></h2>
+        <div class="projects-grid">
+          <div class="project-card" data-tags="system python flask cups printing">
+            <div class="project-header">
+              <div class="project-icon"><i class="fas fa-network-wired"></i></div>
+              <div>
+                <div class="project-title">Driverless Print Infrastructure</div>
+                <div class="project-meta">Python • Flask • PyCUPS • Enterprise</div>
+              </div>
+            </div>
+            <p class="project-desc">Driverless printing server eliminating admin requirements across 50+ corporate devices. Centralized macOS CUPS processing for instant print jobs.</p>
+            <div class="project-links">
+              <a href="case_study/case_study_printer.html" class="project-link">
+                <i class="fas fa-file-alt"></i> Case Study
+              </a>
+            </div>
+          </div>
+          
+          <div class="project-card" data-tags="system devops jamstack netlify">
+            <div class="project-header">
+              <div class="project-icon"><i class="fas fa-fingerprint"></i></div>
+              <div>
+                <div class="project-title">Digital Identity Infrastructure</div>
+                <div class="project-meta">JAMstack • Netlify • DevOps • Privacy</div>
+              </div>
+            </div>
+            <p class="project-desc">Serverless portfolio with global edge CDN, perfect Lighthouse scores, privacy-focused contact proxy, atomic deployments, and zero-framework overhead.</p>
+            <div class="project-links">
+              <a href="case_study/case_study_identity.html" class="project-link">
+                <i class="fas fa-file-alt"></i> Case Study
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Search functionality
+    const searchInput = document.querySelector('.search-input');
+    const projectCards = document.querySelectorAll('.project-card');
+    const categories = document.querySelectorAll('.category');
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      
+      projectCards.forEach(card => {
+        const tags = card.dataset.tags || '';
+        const title = card.querySelector('.project-title').textContent.toLowerCase();
+        const meta = card.querySelector('.project-meta')?.textContent.toLowerCase() || '';
+        const desc = card.querySelector('.project-desc').textContent.toLowerCase();
+        
+        if (query === '' || 
+            tags.includes(query) || 
+            title.includes(query) || 
+            meta.includes(query) || 
+            desc.includes(query)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Show/hide categories based on visible projects
+      categories.forEach(category => {
+        const visibleProjects = category.querySelectorAll('.project-card:not(.hidden)');
+        if (visibleProjects.length > 0) {
+          category.classList.remove('hidden');
+          category.querySelector('.category-count').textContent = `(${visibleProjects.length})`;
+        } else {
+          category.classList.add('hidden');
+        }
+      });
+    });
+
+    // Intersection Observer for fade animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
